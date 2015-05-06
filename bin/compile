@@ -34,8 +34,6 @@ then
     exit 1
 fi
 
-echo "OH MY FUCKING GOD `uname -a`"
-
 if test -d $rust_cache/bin/rustc
 then
     echo "-----> Using Rust $ver"
@@ -58,6 +56,7 @@ export RUSTPATH
 export PATH=$PATH:/$RUSTROOT/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RUSTROOT/lib
 
+echo "OH MY FUCKING GOD `uname -a`"
 echo $build
 
 unset GIT_DIR # unset git dir or it will mess with goinstall
