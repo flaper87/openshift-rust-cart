@@ -53,6 +53,43 @@ export RUSTROOT
 RUSTPATH=$build/.openshift/r
 export RUSTPATH
 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RUSTROOT/lib
+
+if test -f $build/.rustpath
+then
+    CUSTOM_RUSTPATH=$OPENSHIFT_HOMEDIR$(get_gopath $build/.rustpath)
+    export CUSTOM_RUSTPATH
+fi
+
+name=$(get_godir $build/.rustpath)
+p=${CUSTOM_RUSTPATH:-$RUSTPATH}/src/$name
+b=${CUSTOM_RUSTPATH:-$RUSTPATH}/bin
+
+echo $build
+echo $p
+echo $b
+
+mkdir -p $p
+cp -a $build/* $p
+
+unset GIT_DIR # unset git dir or it will mess with goinstall
+echo "-----> Running: cargo build"
+cd $p
+
+if test -f $build/.rustpath
+then
+    RUSTPATH=$CUSTOM_RUSTPATH:$RUSTPATH
+    export RUSTPATH
+fi
+cargo build
+
+mkdir -p $build/bin
+mv $b/* $build/bin
+
+mkdir -p $build/.profile.d
+echo 'export PATH=$PATH' > $build/.profile.d/go.sh
+
+rm -rf $build/.openshift/g # this removes the constructed $RUSTPATH
 
 echo $RUSTROOT > $OPENSHIFT_RUST_DIR/env/RUSTROOT
 echo $RUSTPATH > $OPENSHIFT_RUST_DIR/env/RUSTPATH
