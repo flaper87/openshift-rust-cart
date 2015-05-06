@@ -41,7 +41,6 @@ function start() {
         if [ -d "target" ]; then
             echo "`date +"$FMT"`: Starting application '$OPENSHIFT_APP_NAME'"
 
-	    cargo run
             nohup "cargo run" >> $logf 2>&1 &
 
             ret=$?
