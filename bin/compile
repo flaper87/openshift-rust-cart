@@ -57,6 +57,7 @@ export PATH=$PATH:/$RUSTROOT/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RUSTROOT/lib
 
 echo "OH MY FUCKING GOD `uname -a`"
+echo "`file -L /usr/bin/env | grep -q \"x86[_-]64\"`"
 echo $build
 
 unset GIT_DIR # unset git dir or it will mess with goinstall
