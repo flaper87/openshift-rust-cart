@@ -52,6 +52,9 @@ fi
 RUSTROOT=$rust_cache
 export RUSTROOT
 
+CARGO_HOME=$RUSTROOT/.cargo
+export CARGO_HOME
+
 RUSTPATH=$build/.openshift/r
 export RUSTPATH
 
