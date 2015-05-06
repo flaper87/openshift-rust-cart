@@ -53,6 +53,7 @@ export RUSTROOT
 RUSTPATH=$build/.openshift/r
 export RUSTPATH
 
+export PATH=$PATH:/$RUSTROOT/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RUSTROOT/lib
 
 echo $build
