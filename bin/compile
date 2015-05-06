@@ -34,6 +34,8 @@ then
     exit 1
 fi
 
+export SHELL=/bin/bash
+
 if test -d $rust_cache/bin/rustc
 then
     echo "-----> Using Rust $ver"
@@ -42,7 +44,7 @@ else
     echo    "       First download, may take several minutes"
     echo -n "-----> Installing Rust $ver..."
     curl -sOf $rustup
-    HOME=$cache sh rustup.sh --prefix=$rust_cache --channel=beta --yes --disable-sudo
+    HOME=$cache bash rustup.sh --prefix=$rust_cache --channel=beta --yes --disable-sudo
     rm rustup.sh
     echo " done"
 fi
