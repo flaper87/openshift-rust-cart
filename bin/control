@@ -38,10 +38,10 @@ function start() {
     {
 	package=$(basename $(get_rustdir))
 
-        if [ -f "bin/$package" ]; then
+        if [ -d "target" ]; then
             echo "`date +"$FMT"`: Starting application '$OPENSHIFT_APP_NAME' from bin/$package..."
 
-            nohup "bin/$package" >> $logf 2>&1 &
+            nohup "cargo run" >> $logf 2>&1 &
 
             ret=$?
             npid=$!
