@@ -57,11 +57,11 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RUSTROOT/lib
 
 if test -f $build/.rustpath
 then
-    CUSTOM_RUSTPATH=$OPENSHIFT_HOMEDIR$(get_gopath $build/.rustpath)
+    CUSTOM_RUSTPATH=$OPENSHIFT_HOMEDIR$(get_rustpath $build/.rustpath)
     export CUSTOM_RUSTPATH
 fi
 
-name=$(get_godir $build/.rustpath)
+name=$(get_rustdir $build/.rustpath)
 p=${CUSTOM_RUSTPATH:-$RUSTPATH}/src/$name
 b=${CUSTOM_RUSTPATH:-$RUSTPATH}/bin
 
