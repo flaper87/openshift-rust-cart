@@ -42,7 +42,8 @@ else
     echo    "       First download, may take several minutes"
     echo -n "-----> Installing Rust $ver..."
     curl -sOf $rustup
-    sh rustup.sh --prefix=$rust_cache --revision=$ver
+    sh rustup.sh --prefix=$rust_cache --revision=$ver --yes
+    rm rustup.sh
     echo " done"
 fi
 
