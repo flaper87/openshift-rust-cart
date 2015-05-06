@@ -1,0 +1,4 @@
+[package]
+name = "project"
+version = "0.1.0"
+authors = ["Flavio Percoco <flaper87@gmail.com>"]

@@ -1,0 +1,49 @@
+#!/bin/bash
+#
+# Adapted from https://github.com/kr/heroku-buildpack-go
+#
+# usage: bin/compile <build-dir> <cache-dir>
+
+set -eo pipefail
+
+source "${OPENSHIFT_RUST_DIR}/lib/util"
+
+mkdir -p "$1" "$2"
+build=$(cd "$1/" && pwd)
+cache=$(cd "$2/" && pwd)
+ver=${RUSTVERSION:-1.0.0-beta}
+buildpack=$(dirname $(dirname $0))
+rustup=https://static.rust-lang.org/rustup.sh
+rust_cache=$cache/rust-$ver
+
+# Python
+venv=$cache/venv
+mkdir -p $cache/pip
+python=python2.7
+PATH=$venv/bin:$PATH
+
+if test -e $build/bin && ! test -d $build/bin
+then
+    echo >&2 " !     File bin exists and is not a directory."
+    exit 1
+fi
+
+if ! test -f $build/.rustdir
+then
+    echo >&2 " !     A .rustdir is required. For instructions:"
+    exit 1
+fi
+
+if test -d $rust_cache/bin/rustc
+then
+    echo "-----> Using Rust $ver"
+else
+    mkdir -p $rust_cache
+    echo    "       First download, may take several minutes"
+    echo -n "-----> Installing Rust $ver..."
+    curl -sOf $rustup | sh --prefix=$rust_cache --revision=$ver
+    echo " done"
+fi
+
+RUSTROOT=$cache/rust-$ver/rustc
+export RUSTROOT

@@ -1,3 +1,3 @@
-## OpenShift Cartridge Development Kit - makes creating carts easy!
+The OpenShift `diy` cartridge documentation can be found at:
 
-For the latest on creating cartridges, read the [Cartridge Writer's Guide](https://github.com/openshift/origin-server/blob/master/node/README.writing_cartridges.md)
+http://openshift.github.io/documentation/oo_cartridge_guide.html#diy
