@@ -30,7 +30,7 @@ fi
 
 if ! test -f $build/.rustdir
 then
-    echo >&2 " !     A .rustdir is required. For instructions:"
+    echo >&2 " !     A .rustdir is required"
     exit 1
 fi
 
@@ -47,5 +47,16 @@ else
     echo " done"
 fi
 
-RUSTROOT=$cache/rust-$ver/rustc
+RUSTROOT=$rust_cache
 export RUSTROOT
+
+RUSTPATH=$build/.openshift/r
+export RUSTPATH
+
+
+echo $RUSTROOT > $OPENSHIFT_RUST_DIR/env/RUSTROOT
+echo $RUSTPATH > $OPENSHIFT_RUST_DIR/env/RUSTPATH
+echo "$HOME/bin:$RUSTROOT/bin" > $OPENSHIFT_RUST_DIR/env/OPENSHIFT_RUST_PATH_ELEMENT
+
+echo $OPENSHIFT_RUST_IP > $OPENSHIFT_RUST_DIR/env/HOST
+echo $OPENSHIFT_RUST_PORT > $OPENSHIFT_RUST_DIR/env/PORT
