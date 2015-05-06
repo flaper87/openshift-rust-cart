@@ -41,7 +41,8 @@ else
     mkdir -p $rust_cache
     echo    "       First download, may take several minutes"
     echo -n "-----> Installing Rust $ver..."
-    curl -sOf $rustup | sh --prefix=$rust_cache --revision=$ver
+    curl -sOf $rustup
+    sh rustup.sh --prefix=$rust_cache --revision=$ver
     echo " done"
 fi
 
