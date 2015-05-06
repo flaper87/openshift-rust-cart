@@ -78,7 +78,7 @@ function stop() {
             done
         fi
 
-        echo "`date +"$FMT"`: Stopped Go application '$OPENSHIFTf
+        echo "`date +"$FMT"`: Stopped Go application '$OPENSHIFT'"
         rm -f $OPENSHIFT_RUST_DIR/pid/rust.pid
     else
         echo "Warning: Application '$OPENSHIFT_APP_NAME' server exists without a pid file.  Use force-stop to kill." 1>&2
