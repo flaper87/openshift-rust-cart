@@ -34,6 +34,8 @@ then
     exit 1
 fi
 
+echo "OH MY FUCKING GOD `uname -a`"
+
 if test -d $rust_cache/bin/rustc
 then
     echo "-----> Using Rust $ver"
