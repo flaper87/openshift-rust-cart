@@ -52,7 +52,7 @@ function start() {
 
 	    echo $PATH >> $logf
 	    echo $LD_LIBRARY_PATH >> $logf
-            nohup "PATH=${PATH} LD_LIBRARY_PATH=${LD_LIBRARY_PATH} CARGO_HOME=${CARGO_HOME} cargo run" >> $logf 2>&1 &
+            nohup cargo run >> $logf 2>&1 &
 
             ret=$?
             npid=$!
