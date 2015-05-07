@@ -13,8 +13,8 @@ Categories:
 Provides:
   - rust-1.0.0
   - "rust"
-  - "go (version) = 1.0"
-  - "go (version) = 1"
+  - "rust (version) = 1.0"
+  - "rust (version) = 1"
 Scaling:
   Min: 1
   Max: -1
