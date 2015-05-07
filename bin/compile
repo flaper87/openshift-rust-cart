@@ -59,13 +59,13 @@ export CARGO_HOME
 RUSTPATH=$build/.openshift/r
 export RUSTPATH
 
-export PATH=$PATH:/$RUSTROOT/bin
+export PATH=$PATH:$RUSTROOT/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RUSTROOT/lib
 
 echo "-----> Running: cargo build"
 cd $build
 
-cargo build --verbose
+cargo build --verbose --release
 
 echo $RUSTROOT > $OPENSHIFT_RUST_DIR/env/RUSTROOT
 echo $RUSTPATH > $OPENSHIFT_RUST_DIR/env/RUSTPATH
