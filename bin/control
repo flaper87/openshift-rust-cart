@@ -50,9 +50,8 @@ function start() {
         if [ -d "target" ]; then
             echo "`date +"$FMT"`: Starting application '$OPENSHIFT_APP_NAME'"
 
-	    echo $PATH
-	    echo $LD_LIBRARY_PATH
-	    exit 1
+	    echo $PATH >> $logf
+	    echo $LD_LIBRARY_PATH >> $logf
             nohup "cargo run" >> $logf 2>&1 &
 
             ret=$?
