@@ -11,7 +11,7 @@ export RUSTROOT
 CARGO_HOME=$RUSTROOT/.cargo
 export CARGO_HOME
 
-export PATH=$PATH:/$RUSTROOT/bin
+export PATH=$PATH:$RUSTROOT/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RUSTROOT/lib
 
 function is_rust_service_running() {
@@ -50,6 +50,9 @@ function start() {
         if [ -d "target" ]; then
             echo "`date +"$FMT"`: Starting application '$OPENSHIFT_APP_NAME'"
 
+	    echo $PATH
+	    echo $LD_LIBRARY_PATH
+	    exit 1
             nohup "cargo run" >> $logf 2>&1 &
 
             ret=$?
