@@ -46,10 +46,11 @@ else
     curl -sOf $rustup
     HOME=$cache bash rustup.sh --prefix=$rust_cache --channel=beta --yes --disable-sudo
     rm rustup.sh
+    ln -sf $rust_cache $OPENSHIFT_RUST_DIR/current
     echo " done"
 fi
 
-RUSTROOT=$rust_cache
+RUSTROOT=$OPENSHIFT_RUST_DIR/current
 export RUSTROOT
 
 CARGO_HOME=$RUSTROOT/.cargo

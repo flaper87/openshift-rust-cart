@@ -5,6 +5,15 @@ FMT="%a %b %d %Y %H:%M:%S GMT%z (%Z)"
 
 source "${OPENSHIFT_RUST_DIR}/lib/util"
 
+RUSTROOT=$OPENSHIFT_RUST_DIR/current
+export RUSTROOT
+
+CARGO_HOME=$RUSTROOT/.cargo
+export CARGO_HOME
+
+export PATH=$PATH:/$RUSTROOT/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RUSTROOT/lib
+
 function is_rust_service_running() {
     exec_name=$(basename $(get_rustdir))
     if [ -f $OPENSHIFT_RUST_DIR/pid/rust.pid ]; then
