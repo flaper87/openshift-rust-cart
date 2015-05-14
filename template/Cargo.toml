@@ -4,4 +4,5 @@ version = "0.1.0"
 authors = ["Flavio Percoco <flaper87@gmail.com>"]
 
 [dependencies.nickel]
-version = "*"
+
+git = "https://github.com/nickel-org/nickel.rs.git"
