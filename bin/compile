@@ -11,7 +11,7 @@ source "${OPENSHIFT_RUST_DIR}/lib/util"
 mkdir -p "$1" "$2"
 build=$(cd "$1/" && pwd)
 cache=$(cd "$2/" && pwd)
-ver=${RUSTVERSION:-"1.0.0-beta.5"}
+ver=${RUSTVERSION:-"1.0.0"}
 buildpack=$(dirname $(dirname $0))
 rustup=https://static.rust-lang.org/rustup.sh
 rust_cache=$cache/rust-$ver
@@ -44,7 +44,7 @@ else
     echo    "       First download, may take several minutes"
     echo -n "-----> Installing Rust $ver..."
     curl -sOf $rustup
-    HOME=$cache bash rustup.sh --prefix=$rust_cache --channel=beta --yes --disable-sudo
+    HOME=$cache bash rustup.sh --prefix=$rust_cache --yes --disable-sudo
     rm rustup.sh
     ln -sf $rust_cache $OPENSHIFT_RUST_DIR/current
     echo " done"
