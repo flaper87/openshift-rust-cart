@@ -11,7 +11,7 @@ source "${OPENSHIFT_RUST_DIR}/lib/util"
 mkdir -p "$1" "$2"
 build=$(cd "$1/" && pwd)
 cache=$(cd "$2/" && pwd)
-ver=${RUSTVERSION:-"1.0.0-beta.5"}
+ver=${RUSTVERSION:-"1.1.0"}
 buildpack=$(dirname $(dirname $0))
 rustup=https://static.rust-lang.org/rustup.sh
 rust_cache=$cache/rust-$ver
